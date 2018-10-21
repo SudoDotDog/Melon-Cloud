@@ -57,6 +57,12 @@ else
 	@rm -rf coverage
 endif
 
-publish: install build
-	@echo "[INFO] Publishing package"
-	@npm publish --access=public
+pack: build
+	@echo "[INFO] Packaging"
+ifeq ($(OS), Windows_NT)
+	@cd dist && zip -r ../out.zip *
+
+	# react
+	# @zip -r ./out.zip ./node_modules/react
+else
+endif
